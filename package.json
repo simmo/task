@@ -1,6 +1,6 @@
 {
   "name": "@simmo/task",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "JavaScript utility that provides a consistent, clean return from promises. Particularly helpful when using await/async.",
   "main": "task.cjs.js",
   "module": "task.es.js",
