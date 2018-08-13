@@ -2,8 +2,8 @@
 
 [![Travis][img-travis]][url-travis] [![npm][img-npm]][url-npm] [![downloads][img-downloads]][url-npm] [![License][img-license]][url-license]
 
-[img-travis]: https://img.shields.io/travis/simmo/task.svg?style=flat-square
-[url-travis]: https://travis-ci.org/simmo/task
+[img-travis]: https://img.shields.io/travis/com/simmo/task.svg?style=flat-square
+[url-travis]: https://travis-ci.com/simmo/task
 [img-npm]: https://img.shields.io/npm/v/@simmo/task.svg?style=flat-square
 [url-npm]: https://npmjs.org/package/@simmo/task
 [img-license]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
