@@ -1,5 +1,7 @@
 # Task
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/simmo/task.svg)](https://greenkeeper.io/)
+
 [![Travis][img-travis]][url-travis] [![npm][img-npm]][url-npm] [![downloads][img-downloads]][url-npm] [![License][img-license]][url-license]
 
 [img-travis]: https://img.shields.io/travis/com/simmo/task.svg?style=flat-square
