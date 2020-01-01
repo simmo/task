@@ -18,5 +18,4 @@ node_modules/
 .env
 
 # Build
-task.cjs.js
-task.es.js
+dist/

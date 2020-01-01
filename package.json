@@ -2,8 +2,8 @@
   "name": "@simmo/task",
   "version": "0.0.1",
   "description": "JavaScript utility that provides a consistent, clean return from promises. Particularly helpful when using await/async.",
-  "main": "task.cjs.js",
-  "module": "task.es.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "repository": "github:simmo/task",
   "author": "Mike Simmonds (https://simmo.me)",
   "license": "MIT",
@@ -16,8 +16,7 @@
     "error"
   ],
   "files": [
-    "task.cjs.js",
-    "task.es.js"
+    "dist"
   ],
   "prettier": {
     "semi": false,
@@ -60,7 +59,7 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "node ./scripts/build.js",
+    "build": "rollup -c",
     "prepublishOnly": "npm run build",
     "lint": "eslint src",
     "clean": "git clean -fdX ."
