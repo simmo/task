@@ -1,9 +1,7 @@
-import task from './'
+import task from '.'
 
 describe('task', () => {
-  it('should provide data when resolved', async () => {
-    expect.assertions(2)
-
+  test('provides data when resolved', async () => {
     const resolveData = { hello: 'world' }
     const { error, data } = await task(Promise.resolve(resolveData))
 
@@ -11,9 +9,7 @@ describe('task', () => {
     expect(data).toBe(resolveData)
   })
 
-  it('should provide error when rejected', async () => {
-    expect.assertions(2)
-
+  test('provides error when rejected', async () => {
     const rejectedError = { status: 'failed' }
     const { error, data } = await task(Promise.reject(rejectedError))
 

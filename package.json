@@ -2,8 +2,10 @@
   "name": "@simmo/task",
   "version": "0.0.1",
   "description": "JavaScript utility that provides a consistent, clean return from promises. Particularly helpful when using await/async.",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "typings/index.d.ts",
+  "typings": "typings/index.d.ts",
   "repository": "github:simmo/task",
   "author": "Mike Simmonds (https://simmo.me)",
   "license": "MIT",
@@ -16,7 +18,9 @@
     "error"
   ],
   "files": [
-    "dist"
+    "cjs",
+    "esm",
+    "typings"
   ],
   "prettier": {
     "semi": false,
@@ -24,61 +28,59 @@
     "trailingComma": "es5"
   },
   "eslintConfig": {
-    "parser": "babel-eslint",
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "env": {
-      "browser": true,
-      "node": true,
-      "es6": true,
-      "jest": true
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "off"
     }
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "loose": true,
-          "modules": false
-        }
-      ]
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
     ],
-    "env": {
-      "test": {
-        "presets": [
-          "@babel/preset-env"
-        ]
-      }
-    },
-    "plugins": [
-      "dev-expression"
-    ]
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
   },
   "scripts": {
     "test": "jest",
-    "build": "rollup -c",
     "prepublishOnly": "npm run build",
-    "lint": "eslint src",
-    "clean": "git clean -fdX ."
+    "lint": "eslint --ext .tsx,.ts ./src",
+    "build:cjs": "tsc -m commonjs --outDir cjs",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "yarn build:cjs --declaration --declarationDir typings & yarn build:es"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "babel-core": "^7.0.0-0",
-    "babel-eslint": "^8.2.6",
-    "babel-jest": "^23.4.2",
-    "babel-plugin-dev-expression": "^0.2.1",
-    "eslint": "^5.3.0",
-    "jest": "^23.5.0",
-    "rollup": "^0.64.1",
-    "rollup-plugin-babel": "^4.0.0-beta.8",
-    "rollup-plugin-commonjs": "^9.1.5",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "@rollup/plugin-commonjs": "^11.0.0",
+    "@rollup/plugin-node-resolve": "^6.0.0",
+    "@types/jest": "^24.0.25",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.14",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.4"
   },
   "dependencies": {
-    "invariant": "^2.2.4"
+    "tiny-invariant": "^1.0.6"
   }
 }
